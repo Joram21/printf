@@ -1,24 +1,25 @@
-/*Header guards for the header file*/
-#ifndef J_PRINTF
-#define J_PRINTF
-/*include standard libraries that we will use*/
-#include <stdint.h>
+#ifndef MY_PRINTF
+#define MY_PRINTF
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-/*end of inclusion of libraries and preprocessors*/
+#include <stdint.h>
 
-/*define our own structure*/
-struct transform
+/**
+ * struct convert - structure
+ * @sym: symbol
+ * @f: funtion ptr
+ */
+struct convert
 {
-	char *symbol;
+	char *sym;
 	int (*f)(va_list);
 };
-/*defining the type of the structure*/
-typedef struct transform transform_t;
+typedef struct convert conver_t;
 
-/*define the prototypes used in the project*/
-int _putchar(char c);/*_putchar command we use*/
+
+int _putchar(char c);
 int _printf(const char *format, ...);
 void _vprintf(const char *format, va_list args);
 int parser(const char *format, conver_t funct_list[], va_list args);

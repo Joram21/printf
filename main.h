@@ -27,6 +27,6 @@ int p_char(va_list);
 int p_string(va_list args);
 int p_percent(va_list);
 int print_unsgined_number(unsigned int n);
-int print_number(va_list);
+int print_number(va_list args);
 int p_integer(va_list);
 #endif

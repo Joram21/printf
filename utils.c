@@ -78,7 +78,7 @@ long int convert_size_number(long int num, int size)
  * Return: Casted value of num
  */
 
-long int covert_size_unsgined((unsigned long int num, int size)
+long int covert_size_unsgined(unsigned long int num, int size)
 {
 	if (size == S_LONG)
 		return (num);

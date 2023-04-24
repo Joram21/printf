@@ -1,10 +1,34 @@
 #include "main.h"
-
 /**
  * print_number - function to print nums
+ * print_unsgined_number - print unsigned num
  * @args: arguments passed
- * Return: 0(success)
+ * @n: the number
+ * Return: int
  */
+int print_unsgined_number(unsigned int n)
+{
+        int check;
+        int len;
+        unsigned int num;
+
+        check = 1;
+        len = 0;
+
+        num = n;
+
+        for (; num / check > 9; )
+                check *= 10;
+
+        for (; check != 0; )
+        {
+                len += _putchar('0' + num / check);
+                num %= check;
+                check /= 10;
+        }
+
+        return (len);
+}
 
 int print_number(va_list args)
 {

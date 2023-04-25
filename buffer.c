@@ -48,7 +48,7 @@ int _printf(const char *format, ...)
                     count += snprintf(buffer + (count % 1024), 1024 - (count % 1024), "%X", va_arg(arg_list, unsigned int));
                     break;
                 default:
-                    // unsupported format specifier
+                    /* unsupported format specifier */
                     buffer[count % 1024] = '%';
                     buffer[(count + 1) % 1024] = *format;
                     count += 2;

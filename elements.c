@@ -1,104 +1,73 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdarg.h>
+#include "main.h"
 
 /**
-* print_number - function to print nums
-* print_unsgined_number - print unsigned num
-* @args: arguments passed
-* @n: the number
-* @len: length
-* @num: num
-* Return: int
+* _printf - function to print
+*  @format: type
+*  ...: unkown args
+*  Return: printed char
 */
-int print_number(va_list args)
+int _printf(const char *format, ...)
 {
-int n = va_arg(args, int);
-int check = 1;
-int len = 0;
-unsigned int num;
+int count = 0;
+va_list arg_list;
+va_start(arg_list, format);
 
-if (n < 0)
+while (*format)
 {
-len += _putchar('-');
-num = (unsigned int)(-1 * n); /* Cast to unsigned int to get absolute value*/
+if (*format == '%')
+{
+format++;
+switch (*format)
+{
+case 'c':
+putchar(va_arg(arg_list, int));
+count++;
+break;
+case 's':
+count += printf("%s", va_arg(arg_list, char *));
+break;
+case '%':
+putchar('%');
+count++;
+break;
+default:
+/* unsupported format specifier*/
+putchar('%');
+putchar(*format);
+count += 2;
+break;
+}
 }
 else
 {
-num = (unsigned int)n; /* Cast to unsigned int to handle unsigned numbers*/
+putchar(*format);
+count++;
+}
+format++;
+}
+va_end(arg_list);
+return (count);
 }
 
-for (; num / check > 9; )
-{
-check *= 10;
-}
-for (; check != 0; )
-{
-len += _putchar('0' + num / check);
-num %= check;
-check /= 10;
-}
-return (len);
-}
+
+/* task2*/
 
 
 /**
-* p_char - fun to print chars
-* @args: arguments passed in the function
-* Return: printed value
-*/
-
-
-int p_char(va_list args)
+ * print_binary - print funct
+ * @num: nmber
+ * @buffer: size
+ * @count: count
+ * Return: binaru
+ */
+void print_binary(unsigned int num, char *buffer, int *count)
 {
-	char value;
-
-	value = va_arg(args, int);
-	_putchar(value);
-	return (1);
+    if (num > 1) {
+        print_binary(num / 2, buffer, count);
+    }
+    buffer[*count % 1024] = num % 2 + '0';
+    (*count)++;
 }
 
-/**
-* p_string - func to print string
-* @args: arguments
-* Return: printed character
-*/
-
-int p_string(va_list args)
-{
-	int i;
-	const char *s;
-
-	s = va_arg(args, const char *);
-	if (s == NULL)
-		s = "(null)";
-	for (i = 0; s[i] != '\0'; i++)
-		_putchar(s[i]);
-	return (i);
-}
-
-/**
-* p_percent - fun to print %
-* @args: args
-* Return: printed character
-*/
-
-int p_percent(__attribute__((unused)) va_list args)
-{
-	_putchar('%');
-	return (1);
-}
-
-
-/**
-* p_integer - fun to print int
-* @args: args
-* Return: printed character
-*/
-int p_integer(va_list args)
-{
-	int n;
-
-	n = print_number(args);
-	return (n);
-
-}

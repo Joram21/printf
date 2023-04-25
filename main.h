@@ -29,4 +29,11 @@ int p_percent(va_list);
 int print_unsgined_number(unsigned int n);
 int print_number(va_list);
 int p_integer(va_list);
+void handle_flags(char flag, int num);
+void print_arg(char c, va_list arg);
+void print_binary(unsigned int num, char *buffer, int *count);
+void handle_length_modifiers(char modifier, int num);
+int print_rot13(const char *format, ...);
+char *rot13(char *s);
+
 #endif

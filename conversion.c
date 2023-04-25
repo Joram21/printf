@@ -59,27 +59,8 @@ void print_arg(char c, va_list arg)
             }
             break;
         }
-        case 'R':
-		  {
-            char *s = va_arg(arg, char *);
-            while (*s)
-	    {
-                if ((*s >= 'a' && *s <= 'm') || (*s >= 'A' && *s <= 'M'))
-		{
-                    putchar(*s + 13);
-                }
-		else if ((*s >= 'n' && *s <= 'z') || (*s >= 'N' && *s <= 'Z'))
-		{
-                    putchar(*s - 13);
-                }
-		else
-		{
-                    putchar(*s);
-                }
-                s++;
-            }
-            break;
-        }
+	   
+   
         default:
             printf("Unsupported conversion specifier: %c", c);
             break;

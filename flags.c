@@ -27,3 +27,4 @@ void handle_flags(char flag, int num)
     default:
       printf("Invalid flag character!\n");
   }
+}

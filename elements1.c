@@ -1,7 +1,7 @@
-
 #include <unistd.h>
 #include "main.h"
 #include "printf.h"
+
 /**
 * print_binary - function to print binary
 * @num: numbers
@@ -26,17 +26,16 @@ buffer[*count % 1024] = num % 2 + '0';
 */
 int main()
 {
-int output = _printf(const char, int *format);
 int count = 0;
 char buffer[1024];
 va_list arg_list;
-va_start(arg_list, format);
+va_start(arg_list, format);/*@format: type*/
 
 while (*format)
 {
 if (*format == '%')
 {
-format++;
+format++;/*@format: type*/
 switch (*format)
 {
 case 'c':

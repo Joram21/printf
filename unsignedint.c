@@ -8,39 +8,39 @@
 
 int print_unsigned_integer(va_list list)/*lets us see the numbers we have*/
 {
-	unsigned int numbers_present;
+	unsigned int num;
 
-	numbers_present = va_arg(list, unsigned int);
+	num = va_arg(list, unsigned int);
 
-	if (numbers_present == 0)
-		(print_unsgined_number(numbers_present));
+	if (num == 0)
+		return (print_unsgined_number(num));
 
-	if (numbers_present < 1)
-		(-1);
+	if (num < 1)
+		return (-1);
 
-	return (print_unsgined_number(numbers_present));
+	return (print_unsgined_number(num));
 }
 
 /**
 * print_unsgined_number - output unsigned int
 * @n: int number to print
 * Return: output nums
-*/i
+*/
 
 int print_unsgined_number(unsigned int n)
 {
-	int num_pool = 1, size;
-	unsigned int numbers_found;
+	int dive = 1, length = 0;
+	unsigned int num = n;
 
-	numbers_found = n;
-	size = 0;
-	if (numbers_found / num_pool > 9)
-		       	num_pool *= 10;
-	if (num_pool != 0)
-	{
-		size += _putchar('0' + numbers_found / num_pool);
-		numbers_found %= num_pool;
-		num_pool /= 10;
-	}
-	return (size);
+	do {
+		dive *= 10;
+	} while (num / dive > 9);
 
+	do {
+		length += _putchar('0' + num / dive);
+		num %= dive;
+		dive /= 10;
+	} while (dive != 0);
+
+	return (length);
+}

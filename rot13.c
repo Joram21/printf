@@ -1,27 +1,38 @@
 #include "main.h"
 /**
- * rot13 - encodes a string using rot13.
+ * print_rot13 - encodes a string using rot13.
  * @list: args to encode
+ * @str: string 
  * Return: converted string
  */
 int print_rot13(va_list list)
 {
-	int x, y;
-	char *s
+	int x = 0, y;
+
+	char *str;
 	char a[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char b[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	s = = va_arg(list, char *);
+	str = va_arg(list, char *);
 	if (str == NULL)
-return (-1);
+		return (-1);
 
-	while (y = 0 && s[x] == a[y]);
-		_putchar(u[y]);
-	y++;
+	do {
+		y = 0;
+		do {
+			if (str[x] == a[y])
+			{
+				_putchar(b[y]);
+				break;
+			}
+			y++;
+		} while (y <= 52);
 
-	if (x == 53 &&str[i] != '\0' )
-_putchar(str[i]);
+		if (y == 53)
+			_putchar(str[x]);
 
-i++;
-return (i);
+		x++;
+	} while (str[x] != '\0');
+
+	return (x);
 }

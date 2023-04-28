@@ -114,7 +114,12 @@ char *fill_hex_array(char *bnr, char *hex, int isupp, int limit);
 int is_printable(char);
 int append_hexa_code(char, char[], int);
 int is_digit(int);
-
+/* specifier.c module */
+int (*get_specifier(char *s))(va_list ap, params_t *params);
+int get_print_func(char *s, va_list ap, params_t *params);
+int get_flag(char *s, params_t *params);
+int get_modifier(char *s, params_t *params);
+char *get_width(char *s, params_t *params, va_list ap);
 long int convert_size_number(long int num, int size);
 long int convert_size_unsgnd(unsigned long int num, int size);
 int get_flags(const char *format, int *i);
